@@ -50,9 +50,7 @@
     {
         "css":
         {
-            "tokens": "https://…/style/tokens.css",
-            "themeLight": "https://…/style/recipe.light.css",
-            "themeDark": "https://…/style/recipe.dark.css"
+            "main": "./style.css"
         }
     },
     "mcp":

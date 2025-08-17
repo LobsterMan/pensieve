@@ -1,0 +1,378 @@
+/* Recipe Type Styling for Pensieve Notes */
+
+/* Base note styling */
+.pensieve-note {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #fff;
+}
+
+.pensieve-recipe {
+    /* Recipe-specific container styling */
+}
+
+/* Frontmatter styling */
+.pensieve-frontmatter {
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+}
+
+.pensieve-title {
+    margin: 0 0 1rem 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    line-height: 1.2;
+}
+
+.pensieve-date {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.pensieve-tags {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.pensieve-tag {
+    background: #ecf0f1;
+    color: #34495e;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Recipe-specific frontmatter fields */
+.pensieve-recipe-servings {
+    background: #e8f5e8;
+    border-left: 4px solid #27ae60;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.pensieve-recipe-servings::before {
+    content: "🍽️ Servings: ";
+    font-weight: 600;
+    color: #27ae60;
+}
+
+.pensieve-recipe-prep_time {
+    background: #fff3e0;
+    border-left: 4px solid #f39c12;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.pensieve-recipe-prep_time::before {
+    content: "⏱️ Prep Time: ";
+    font-weight: 600;
+    color: #f39c12;
+}
+
+.pensieve-recipe-cook_time {
+    background: #ffebee;
+    border-left: 4px solid #e74c3c;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.pensieve-recipe-cook_time::before {
+    content: "🔥 Cook Time: ";
+    font-weight: 600;
+    color: #e74c3c;
+}
+
+.pensieve-recipe-total_time {
+    background: #f3e5f5;
+    border-left: 4px solid #9b59b6;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.pensieve-recipe-total_time::before {
+    content: "⏰ Total Time: ";
+    font-weight: 600;
+    color: #9b59b6;
+}
+
+.pensieve-recipe-source {
+    background: #e3f2fd;
+    border-left: 4px solid #3498db;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0 0.25rem 0.25rem 0;
+    word-break: break-all;
+}
+
+.pensieve-recipe-source::before {
+    content: "🔗 Source: ";
+    font-weight: 600;
+    color: #3498db;
+}
+
+/* Content styling */
+.pensieve-content {
+    margin-top: 2rem;
+}
+
+/* Headings */
+.pensieve-content h1,
+.pensieve-content h2,
+.pensieve-content h3,
+.pensieve-content h4,
+.pensieve-content h5,
+.pensieve-content h6 {
+    margin: 2rem 0 1rem 0;
+    font-weight: 600;
+    color: #2c3e50;
+    line-height: 1.3;
+}
+
+.pensieve-content h1 { font-size: 2rem; }
+.pensieve-content h2 { font-size: 1.75rem; }
+.pensieve-content h3 { font-size: 1.5rem; }
+.pensieve-content h4 { font-size: 1.25rem; }
+.pensieve-content h5 { font-size: 1.1rem; }
+.pensieve-content h6 { font-size: 1rem; }
+
+.pensieve-content h1:first-child,
+.pensieve-content h2:first-child,
+.pensieve-content h3:first-child {
+    margin-top: 0;
+}
+
+/* Paragraphs */
+.pensieve-content p {
+    margin: 1rem 0;
+}
+
+/* Lists */
+.pensieve-content ul,
+.pensieve-content ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.pensieve-content li {
+    margin: 0.5rem 0;
+}
+
+/* Recipe-specific list styling */
+.pensieve-content h2:contains("Ingredients") + ul,
+.pensieve-content h2:contains("ingredients") + ul {
+    background: #f8fdf8;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #d4edda;
+    border-left: 4px solid #28a745;
+}
+
+.pensieve-content h2:contains("Directions") + ol,
+.pensieve-content h2:contains("directions") + ol {
+    background: #fff8f8;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #f5c6cb;
+    border-left: 4px solid #dc3545;
+}
+
+/* Enhanced ordered list for directions */
+.pensieve-content h2:contains("Directions") + ol,
+.pensieve-content h2:contains("directions") + ol {
+    counter-reset: step-counter;
+    list-style: none;
+    padding-left: 0;
+}
+
+.pensieve-content h2:contains("Directions") + ol li,
+.pensieve-content h2:contains("directions") + ol li {
+    counter-increment: step-counter;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.25rem;
+    border: 1px solid #e9ecef;
+    position: relative;
+    padding-left: 3.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.pensieve-content h2:contains("Directions") + ol li::before,
+.pensieve-content h2:contains("directions") + ol li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    background: #dc3545;
+    color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* Links */
+.pensieve-content a {
+    color: #3498db;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.2s ease;
+}
+
+.pensieve-content a:hover {
+    border-bottom-color: #3498db;
+}
+
+/* Images */
+.pensieve-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Error and fallback styles */
+.pensieve-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #f5c6cb;
+}
+
+.pensieve-error h3 {
+    margin-top: 0;
+    color: #721c24;
+}
+
+.pensieve-markdown {
+    font-family: 'Monaco', 'Menlo', monospace;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e9ecef;
+}
+
+.pensieve-markdown pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .pensieve-note {
+        background: #1a1a1a;
+        color: #e0e0e0;
+    }
+    
+    .pensieve-frontmatter {
+        border-bottom-color: #444;
+    }
+    
+    .pensieve-title {
+        color: #f0f0f0;
+    }
+    
+    .pensieve-date {
+        color: #b0b0b0;
+    }
+    
+    .pensieve-tag {
+        background: #404040;
+        color: #e0e0e0;
+    }
+    
+    .pensieve-content h1,
+    .pensieve-content h2,
+    .pensieve-content h3,
+    .pensieve-content h4,
+    .pensieve-content h5,
+    .pensieve-content h6 {
+        color: #f0f0f0;
+    }
+    
+    /* Dark mode recipe fields */
+    .pensieve-recipe-servings {
+        background: #1e2f1e;
+        border-left-color: #27ae60;
+    }
+    
+    .pensieve-recipe-prep_time {
+        background: #2f251e;
+        border-left-color: #f39c12;
+    }
+    
+    .pensieve-recipe-cook_time {
+        background: #2f1e1e;
+        border-left-color: #e74c3c;
+    }
+    
+    .pensieve-recipe-total_time {
+        background: #2a1e2f;
+        border-left-color: #9b59b6;
+    }
+    
+    .pensieve-recipe-source {
+        background: #1e252f;
+        border-left-color: #3498db;
+    }
+    
+    /* Dark mode content styling */
+    .pensieve-content h2:contains("Ingredients") + ul,
+    .pensieve-content h2:contains("ingredients") + ul {
+        background: #1e2f1e;
+        border-color: #2d5a2d;
+    }
+    
+    .pensieve-content h2:contains("Directions") + ol,
+    .pensieve-content h2:contains("directions") + ol {
+        background: #2f1e1e;
+        border-color: #5a2d2d;
+    }
+    
+    .pensieve-content h2:contains("Directions") + ol li,
+    .pensieve-content h2:contains("directions") + ol li {
+        background: #2a2a2a;
+        border-color: #444;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .pensieve-note {
+        padding: 1rem;
+    }
+    
+    .pensieve-title {
+        font-size: 2rem;
+    }
+    
+    .pensieve-tags {
+        gap: 0.25rem;
+    }
+    
+    .pensieve-content h1 { font-size: 1.75rem; }
+    .pensieve-content h2 { font-size: 1.5rem; }
+    .pensieve-content h3 { font-size: 1.25rem; }
+}

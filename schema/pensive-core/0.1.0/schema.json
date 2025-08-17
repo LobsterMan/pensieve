@@ -49,9 +49,7 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "tokens": { "type": "string", "format": "uri" },
-            "themeLight": { "type": "string", "format": "uri" },
-            "themeDark": { "type": "string", "format": "uri" }
+            "main": { "type": "string", "format": "uri" }
           }
         },
         "classnames": {
