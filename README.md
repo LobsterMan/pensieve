@@ -5,10 +5,6 @@
 > 
 > This framework is in early development. Schemas, APIs, and file formats are subject to change without notice. Not recommended for production (or any) use.
 
-**Pensieve** is a framework for creating **self-describing, portable, and schema-linked Markdown notes**.
-Each note carries its own "DNA" in the form of a reference to a schema, which defines its structure, styling, and machine-read/write behavior.
-
-The goal is to make knowledge nuggets **shareable, editable, and interpretable** across tools, from Obsidian to web viewers to AI agents.ieve
 
 **Pensieve** is a framework for creating **self-describing, portable, and schema-linked Markdown notes**.
 Each note carries its own “DNA” in the form of a reference to a schema, which defines its structure, styling, and machine-read/write behavior.
