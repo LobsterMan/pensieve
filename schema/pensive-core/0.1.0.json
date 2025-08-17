@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LobsterMan/pensieve/main/schema/pensive-core/0.1.0.json",
+  "title": "Pensieve Core Schema (schema-of-schemas) v0.1.0",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": ["pensieve", "frontmatterSchema"],
+  "properties": {
+    "pensieve": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coreVersion", "type", "version"],
+      "properties": {
+        "coreVersion": { "const": "0.1.0" },
+        "type": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$" },
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "title": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+
+    "frontmatterSchema": {
+      "type": "object",
+      "description": "JSON Schema for the note's YAML frontmatter."
+    },
+
+    "bodyRules": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "strictness": { "enum": ["off", "lenient", "medium", "strict"] },
+        "requiredHeadings": { "$ref": "#/$defs/headingRules" },
+        "optionalHeadings": { "$ref": "#/$defs/headingRules" },
+        "constraints": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/constraint" },
+          "description": "Additional body constraints (e.g., list type under a heading)."
+        },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "styling": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "css": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tokens": { "type": "string", "format": "uri" },
+            "themeLight": { "type": "string", "format": "uri" },
+            "themeDark": { "type": "string", "format": "uri" }
+          }
+        },
+        "classnames": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "Suggested CSS classnames a renderer may apply (e.g., root/section/list/step)."
+        }
+      }
+    },
+
+    "mcp": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "capabilities": {
+          "type": "array",
+          "items": { "enum": ["read", "create", "update", "search", "delete"] },
+          "uniqueItems": true
+        },
+        "actions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/action" }
+        },
+        "search": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/searchSpec" }
+        }
+      }
+    },
+
+    "renderHints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "toc": { "type": "boolean" },
+        "callouts": { "type": "boolean" },
+        "gallery": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "autoGrid": { "type": "boolean" },
+            "minWidthPx": { "type": "integer", "minimum": 80 }
+          }
+        }
+      }
+    }
+  },
+
+  "$defs": {
+    "headingRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text", "level"],
+        "properties": {
+          "text": { "type": "string" },
+          "level": { "type": "integer", "minimum": 1, "maximum": 6 },
+          "expects": { "enum": ["ul", "ol", "none"] },
+          "class": { "type": "string", "description": "Optional CSS class hint for this section." }
+        }
+      }
+    },
+
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["listUnderHeading", "sectionOrder", "maxImages", "regex"] },
+        "heading": { "type": "string" },
+        "list": { "enum": ["ul", "ol"] },
+        "max": { "type": "integer", "minimum": 0 },
+        "pattern": { "type": "string", "description": "Regex to apply to section content." }
+      }
+    },
+
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z0-9_:-]+$" },
+        "input": { "type": "object", "additionalProperties": true },
+        "behavior": { "type": "string", "description": "Human description of what to do to the note." }
+      }
+    },
+
+    "searchSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "query"],
+      "properties": {
+        "name": { "type": "string" },
+        "query": { "type": "string", "description": "Renderer/MCP-specific search DSL or guidance." },
+        "params": { "type": "object", "additionalProperties": true }
+      }
+    }
+  }
+}

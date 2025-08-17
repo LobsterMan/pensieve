@@ -1,0 +1,66 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/LobsterMan/pensieve/main/schema/recipe/0.1.0.json",
+    "pensieve":
+    {
+        "coreVersion": "0.1.0",
+        "type": "recipe",
+        "version": "1.0.0",
+        "title": "Recipe Type Schema",
+        "description": "Recipes with YAML + Markdown sections"
+    },
+    "frontmatterSchema":
+    {},
+    "bodyRules":
+    {
+        "strictness": "medium",
+        "requiredHeadings":
+        [
+            {
+                "text": "Ingredients",
+                "level": 2,
+                "expects": "ul"
+            },
+            {
+                "text": "Directions",
+                "level": 2,
+                "expects": "ol"
+            }
+        ]
+    },
+    "styling":
+    {
+        "css":
+        {
+            "tokens": "https://…/style/tokens.css",
+            "themeLight": "https://…/style/recipe.light.css",
+            "themeDark": "https://…/style/recipe.dark.css"
+        }
+    },
+    "mcp":
+    {
+        "capabilities":
+        [
+            "read",
+            "create",
+            "update",
+            "search"
+        ],
+        "actions":
+        [
+            {
+                "name": "add_ingredient",
+                "input":
+                {
+                    "ingredient": "string"
+                },
+                "behavior": "Append bullet under ## Ingredients"
+            }
+        ]
+    },
+    "renderHints":
+    {
+        "toc": false,
+        "callouts": true
+    }
+}
