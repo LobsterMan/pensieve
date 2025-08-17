@@ -431,10 +431,34 @@ class PensieveReader {
             if (this.frontmatter[field]) {
                 const fieldDiv = document.createElement('div');
                 fieldDiv.className = `pensieve-recipe-${field}`;
-                fieldDiv.textContent = this.frontmatter[field];
+                
+                // Check if this field should be rendered as a link based on schema
+                if (this.isUriField(field)) {
+                    const link = document.createElement('a');
+                    link.href = this.frontmatter[field];
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.textContent = this.frontmatter[field];
+                    fieldDiv.appendChild(link);
+                } else {
+                    fieldDiv.textContent = this.frontmatter[field];
+                }
+                
                 header.appendChild(fieldDiv);
             }
         });
+    }
+
+    /**
+     * Check if a frontmatter field should be rendered as a URI based on schema
+     */
+    isUriField(fieldName) {
+        if (!this.schema?.frontmatterSchema?.properties) {
+            return false;
+        }
+        
+        const fieldSchema = this.schema.frontmatterSchema.properties[fieldName];
+        return fieldSchema && fieldSchema.format === 'uri';
     }
 
     /**
@@ -548,10 +572,11 @@ class PensieveReader {
      * Process inline markdown (links, etc.)
      */
     processInlineMarkdown(text) {
-        // Handle links [text](url)
-        text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+        // First escape HTML entities to prevent XSS
+        const escapedText = this.escapeHtml(text);
         
-        return this.escapeHtml(text);
+        // Then handle links [text](url) - this needs to happen after escaping
+        return escapedText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
     }
 
     /**
@@ -560,16 +585,7 @@ class PensieveReader {
     escapeHtml(text) {
         const div = document.createElement('div');
         div.textContent = text;
-        return div.innerHTML;
-    }
-
-    /**
-     * Escape HTML entities
-     */
-    escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+        return div.innerHTML; 
     }
 
     /**

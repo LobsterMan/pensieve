@@ -102,6 +102,8 @@ prep_time: 15 min
 
 ## Development Mode
 
+To serve locally, run `python3 -m http.server 8080` on the project root
+
 For local development, the viewer automatically replaces GitHub URLs with local ones:
 - `https://raw.githubusercontent.com/LobsterMan/pensieve/main/schema/recipe/0.1.0` 
 - becomes `http://localhost:8080/schema/recipe/0.1.0`
