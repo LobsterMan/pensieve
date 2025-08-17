@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/LobsterMan/pensieve/main/schema/pensive-core/0.1.0.json",
+  "$id": "https://raw.githubusercontent.com/LobsterMan/pensieve/main/schema/pensive-core/0.1.0",
   "title": "Pensieve Core Schema (schema-of-schemas) v0.1.0",
   "type": "object",
   "additionalProperties": false,

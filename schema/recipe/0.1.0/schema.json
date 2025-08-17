@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/LobsterMan/pensieve/main/schema/recipe/0.1.0.json",
+    "$id": "https://raw.githubusercontent.com/LobsterMan/pensieve/main/schema/recipe/0.1.0",
     "pensieve":
     {
         "coreVersion": "0.1.0",
@@ -10,7 +10,25 @@
         "description": "Recipes with YAML + Markdown sections"
     },
     "frontmatterSchema":
-    {},
+    {
+        "type": "object",
+        "required": ["type", "pensive_schema", "title"],
+        "properties": {
+            "type": { "const": "recipe" },
+            "pensive_schema": { "type": "string", "format": "uri" },
+            "title": { "type": "string" },
+            "date": { "type": "string", "format": "date" },
+            "source": { "type": "string", "format": "uri" },
+            "tags": {
+                "type": "array",
+                "items": { "type": "string" }
+            },
+            "servings": { "type": "string" },
+            "prep_time": { "type": "string" },
+            "cook_time": { "type": "string" },
+            "total_time": { "type": "string" }
+        }
+    },
     "bodyRules":
     {
         "strictness": "medium",

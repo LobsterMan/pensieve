@@ -1,7 +1,7 @@
 ---
 
 type: recipe
-pensive_schema: https://raw.githubusercontent.com/LobsterMan/pensieve/main/schema/recipe/0.1.0.json
+pensive_schema: https://raw.githubusercontent.com/LobsterMan/pensieve/main/schema/recipe/0.1.0
 title: Carrot Cake with Cream Cheese Frosting
 date: 2025-08-16
 source: https://www.oogio.net/carrot_cake_with_cream_cheese_frosting
