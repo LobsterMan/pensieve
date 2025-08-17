@@ -1,4 +1,4 @@
-# 🧠 Pensieve
+# Pensieve
 
 **Pensieve** is a framework for creating **self-describing, portable, and schema-linked Markdown notes**.
 Each note carries its own “DNA” in the form of a reference to a schema, which defines its structure, styling, and machine-read/write behavior.
@@ -7,7 +7,7 @@ The goal is to make knowledge nuggets **shareable, editable, and interpretable**
 
 ---
 
-## ✨ Core Idea
+## Core Idea
 
 A Pensieve note is just Markdown with YAML frontmatter.
 In its frontmatter, it points to a **type schema**:
@@ -33,7 +33,7 @@ That schema file tells any Pensieve-aware tool:
 
 ---
 
-## 🧩 How it works
+## How it works
 
 ### 1. Core schema (`pensieve-core`)
 
@@ -66,7 +66,7 @@ That schema file tells any Pensieve-aware tool:
 
 ---
 
-## 🚀 Work Plan
+## Work Plan
 
 1. **Create the Pensieve core schema**
 
@@ -109,7 +109,7 @@ That schema file tells any Pensieve-aware tool:
 
 ---
 
-## 📦 Design Principles
+## Design Principles
 
 * **Self-contained** → every note carries its schema pointer.
 * **Versioned** → schemas are semantic-versioned; notes pin to exact schema versions.
@@ -120,7 +120,7 @@ That schema file tells any Pensieve-aware tool:
 
 ---
 
-## 🔮 Roadmap & Ideas
+## Roadmap & Ideas
 
 * Schema registry → central index of all available types and versions.
 * Theming system → global tokens + per-type themes.
@@ -130,7 +130,7 @@ That schema file tells any Pensieve-aware tool:
 
 ---
 
-## 📖 Example
+## Example
 
 A recipe note referencing the schema:
 
@@ -165,6 +165,6 @@ Viewed in plain Markdown: still clear and human-readable.
 
 ---
 
-## ⚖️ License
+## License
 
-TBD (MIT recommended for maximum openness).
+MIT License, see [`LICENSE`](./LICENSE).
